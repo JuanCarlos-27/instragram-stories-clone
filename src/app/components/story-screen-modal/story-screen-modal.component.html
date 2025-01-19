@@ -8,11 +8,28 @@
     </button>
   </header>
 
-  <section
-    class="flex justify-center absolute inset-0 mt-5 w-[514px] h-[913px] m-auto"
-  >
-    <article class="bg-blue-500 h-full w-full rounded-xl"></article>
-  </section>
+  <div class="relative flex items-center h-screen -mt-14 w-[1691px] m-auto">
+    <story-thumbnail-preview
+      class="absolute"
+      style="transform: translateX(calc(-50% + 162px))"
+    />
+    <story-thumbnail-preview
+      class="absolute"
+      style="transform: translateX(calc(-50% + 427px))"
+    />
+    <story-card
+      class="absolute"
+      style="transform: translateX(calc(-50% + 846px))"
+    />
+    <story-thumbnail-preview
+      class="absolute"
+      style="transform: translateX(calc(-50% + 1264px))"
+    />
+    <story-thumbnail-preview
+      class="absolute"
+      style="transform: translateX(calc(-50% + 1529px))"
+    />
+  </div>
 </div>
 
 <ng-template #iconClose>
@@ -27,8 +44,7 @@
     stroke-linecap="round"
     stroke-linejoin="round"
   >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M18 6l-12 12" />
-    <path d="M6 6l12 12" />
+    <path d="M0 0h24v24H0z" stroke="none" />
+    <path d="M18 6 6 18M6 6l12 12" />
   </svg>
 </ng-template>

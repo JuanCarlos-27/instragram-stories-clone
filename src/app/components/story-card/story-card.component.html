@@ -1,0 +1,191 @@
+<section class="flex justify-center inset-0 w-[514px] h-[913px]">
+  <button class="absolute left-0 top-1/2 transform -translate-y-1/2 -ml-10">
+    <ng-container [ngTemplateOutlet]="arrowLeft" />
+  </button>
+  <article
+    class="bg-blue-500 h-full w-full rounded-xl flex flex-col justify-between"
+    style="
+      background-image: url('image.png');
+      background-size: cover;
+      background-position: center;
+    "
+  >
+    <header
+      class="grid grid-cols-2 gap-3 px-5 py-5"
+      style="
+        background-image: linear-gradient(
+          180deg,
+          rgba(38, 38, 38, 0.8) 0%,
+          rgba(38, 38, 38, 0) 100%
+        );
+      "
+    >
+      <div class="col-span-2 h-[2px] bg-white/40 w-full"></div>
+
+      <div class="flex items-center gap-2">
+        <img
+          class="w-10 h-10 rounded-full"
+          src="https://xsgames.co/randomusers/assets/avatars/male/1.jpg"
+          alt=""
+        />
+        <small class="flex items-center gap-1">
+          <span>lautarodelcampo</span>
+          <ng-container [ngTemplateOutlet]="verifiedIcon" />
+        </small>
+        <time class="opacity-80">19h</time>
+      </div>
+
+      <div class="justify-self-end flex items-center gap-2">
+        <button>
+          <ng-container [ngTemplateOutlet]="iconPlay" />
+        </button>
+        <button>
+          <ng-container [ngTemplateOutlet]="iconDots" />
+        </button>
+      </div>
+    </header>
+
+    <footer
+      class="flex gap-4 px-5 py-4"
+      style="
+        background-image: linear-gradient(
+          180deg,
+          rgba(38, 38, 38, 0) 0%,
+          rgba(38, 38, 38, 0.6) 100%
+        );
+      "
+    >
+      <input
+        class="flex-1 rounded-2xl py-2 px-4 bg-transparent border border-white/50 outline-none placeholder:text-white/80"
+        type="text"
+        placeholder="Reply to lautarodelcampo..."
+      />
+      <button>
+        <ng-container [ngTemplateOutlet]="likeIcon" />
+      </button>
+      <button>
+        <ng-container [ngTemplateOutlet]="sendIcon" />
+      </button>
+    </footer>
+  </article>
+
+  <button class="absolute right-0 top-1/2 transform -translate-y-1/2 -mr-10">
+    <ng-container [ngTemplateOutlet]="arrowRight" />
+  </button>
+</section>
+
+<ng-template #iconDots>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="25"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M0 0h24v24H0z" stroke="none" />
+    <path
+      d="M4 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0M11 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0M18 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #iconPlay>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="25"
+    fill="currentColor"
+  >
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path
+      d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8A1 1 0 0 0 6 4z"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #sendIcon>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="25"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M0 0h24v24H0z" stroke="none" />
+    <path
+      d="M10 14 21 3M21 3l-6.5 18a.55.55 0 0 1-1 0L10 14l-7-3.5a.55.55 0 0 1 0-1L21 3"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #likeIcon>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="25"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M0 0h24v24H0z" stroke="none" />
+    <path
+      d="M19.5 12.572 12 20l-7.5-7.428A5 5 0 1 1 12 6.006a5 5 0 1 1 7.5 6.572"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #verifiedIcon>
+  <svg
+    aria-label="Verified"
+    class="x1lliihq x1n2onr6 x1g9anri"
+    fill="currentColor"
+    height="12"
+    role="img"
+    viewBox="0 0 40 40"
+    width="12"
+  >
+    <title>Verified</title>
+    <path
+      d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
+      fill-rule="evenodd"
+    ></path>
+  </svg>
+</ng-template>
+
+<ng-template #arrowLeft>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path
+      d="M17 3.34a10 10 0 0 1 5 8.66c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10a10 10 0 0 1 15 -8.66m-3.293 4.953a1 1 0 0 0 -1.414 0l-3 3a1 1 0 0 0 0 1.414l3 3a1 1 0 0 0 1.414 0l.083 -.094a1 1 0 0 0 -.083 -1.32l-2.292 -2.293l2.292 -2.293a1 1 0 0 0 0 -1.414"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #arrowRight>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path
+      d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -20 0c0 -5.523 4.477 -10 10 -10m-.293 6.293a1 1 0 0 0 -1.414 0l-.083 .094a1 1 0 0 0 .083 1.32l2.292 2.293l-2.292 2.293a1 1 0 0 0 1.414 1.414l3 -3a1 1 0 0 0 0 -1.414z"
+    />
+  </svg>
+</ng-template>

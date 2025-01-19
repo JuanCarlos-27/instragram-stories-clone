@@ -1,0 +1,8 @@
+.story-small-preview {
+  background-image: linear-gradient(
+    180deg,
+    rgba(38, 38, 38, 0.6) 0%,
+    rgba(38, 38, 38, 0) 100%,
+    rgba(0, 0, 0, 1)
+  );
+}
