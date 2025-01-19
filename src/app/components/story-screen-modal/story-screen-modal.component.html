@@ -1,0 +1,34 @@
+<div
+  class="px-10 py-5 w-full justify-center relative duration-300 ease-in-out transition-all"
+>
+  <header class="flex justify-between">
+    <h1>Instagram</h1>
+    <button type="button" (click)="closeModal()">
+      <ng-container [ngTemplateOutlet]="iconClose"> </ng-container>
+    </button>
+  </header>
+
+  <section
+    class="flex justify-center absolute inset-0 mt-5 w-[514px] h-[913px] m-auto"
+  >
+    <article class="bg-blue-500 h-full w-full rounded-xl"></article>
+  </section>
+</div>
+
+<ng-template #iconClose>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="35"
+    height="35"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M18 6l-12 12" />
+    <path d="M6 6l12 12" />
+  </svg>
+</ng-template>
