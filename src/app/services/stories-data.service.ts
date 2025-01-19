@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Story } from '../interfaces/story.interface';
+import { Story } from '@interfaces/story.interface';
 import { profiles } from '../data';
 
 @Injectable({

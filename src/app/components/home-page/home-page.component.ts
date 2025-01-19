@@ -1,8 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { profiles } from '../../data';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
-import { StoryPictureComponent } from '../story-picture/story-picture.component';
+import { StoryPictureComponent } from '@components/story-picture/story-picture.component';
 import { Router } from '@angular/router';
+import { StoriesDataService } from '@services/stories-data.service';
+import { Story } from '@interfaces/story.interface';
 
 @Component({
   selector: 'app-home-page',
@@ -12,12 +13,12 @@ import { Router } from '@angular/router';
 })
 export default class HomePageComponent {
   private router = inject(Router);
+  private data = inject(StoriesDataService);
 
-  public profiles = signal(profiles);
-  public visbleProfiles = computed(() => this.profiles());
-  public profilesLength = computed(() => this.profiles().length);
   public translateX = signal('translateX(0)');
   public movement = signal(1);
+  public visbleProfiles = computed(() => this.data.stories());
+  public profilesLength = computed(() => this.data.stories().length);
 
   public isFinal = computed(
     () => this.movement() * 4 >= this.profilesLength() - 4,
@@ -35,7 +36,7 @@ export default class HomePageComponent {
     this.movement.set(this.movement() - 1);
   }
 
-  openStory(profile: any) {
+  openStory(profile: Story) {
     this.router.navigate(['/stories', profile.name]);
   }
 }

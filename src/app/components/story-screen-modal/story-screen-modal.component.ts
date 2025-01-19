@@ -1,8 +1,8 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, inject, output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { StoryThumbnailPreviewComponent } from '../story-thumbnail-preview/story-thumbnail-preview.component';
-import { StoryCardComponent } from '../story-card/story-card.component';
+import { StoryThumbnailPreviewComponent } from '@components/story-thumbnail-preview/story-thumbnail-preview.component';
+import { StoryCardComponent } from '@components/story-card/story-card.component';
 
 @Component({
   selector: 'story-screen-modal',
