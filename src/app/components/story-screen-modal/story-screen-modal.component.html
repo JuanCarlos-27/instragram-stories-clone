@@ -30,6 +30,8 @@
     <story-card
       [user]="story()?.user!"
       [stories]="story()?.stories!"
+      [nextUserName]="getAdjacentStory(1)?.user?.name!"
+      [prevUserName]="getAdjacentStory(-1)?.user?.name!"
       class="absolute"
       style="transform: translateX(calc(-50% + 846px))"
     />

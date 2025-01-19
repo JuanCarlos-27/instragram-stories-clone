@@ -6,65 +6,67 @@
     <ng-container [ngTemplateOutlet]="arrowLeft" />
   </button>
 
-  <article
-    class="h-full w-full rounded-xl flex flex-col justify-between bg-cover bg-center"
-    [ngStyle]="{ 'background-image': 'url(' + storyContent()!.image + ')' }"
-  >
-    <header class="grid grid-cols-2 gap-3 px-5 py-5 story-card-header">
-      <div class="col-span-2 flex gap-2 w-full">
-        @for (story of stories(); track $index) {
-          <div class="h-[2px] bg-white/40 flex-1 relative">
-            @if ($index === storyPosition()) {
-              <div
-                class="absolute top-0 left-0 h-full bg-white transition-all duration-300"
-                [ngStyle]="{ width: progress() + '%' }"
-              ></div>
-            } @else if ($index < storyPosition()) {
-              <div
-                class="absolute top-0 left-0 h-full bg-white transition-all duration-300 w-full"
-              ></div>
-            }
-          </div>
-        }
-      </div>
+  @if (storyContent()?.image) {
+    <article
+      class="h-full w-full rounded-xl flex flex-col justify-between bg-cover bg-center"
+      [ngStyle]="{ 'background-image': 'url(' + storyContent()?.image + ')' }"
+    >
+      <header class="grid grid-cols-2 gap-3 px-5 py-5 story-card-header">
+        <div class="col-span-2 flex gap-2 w-full">
+          @for (story of stories(); track $index) {
+            <div class="h-[2px] bg-white/40 flex-1 relative">
+              @if ($index === storyPosition()) {
+                <div
+                  class="absolute top-0 left-0 h-full bg-white transition-all duration-300"
+                  [ngStyle]="{ width: progress() + '%' }"
+                ></div>
+              } @else if ($index < storyPosition()) {
+                <div
+                  class="absolute top-0 left-0 h-full bg-white transition-all duration-300 w-full"
+                ></div>
+              }
+            </div>
+          }
+        </div>
 
-      <div class="flex items-center gap-2">
-        <img
-          class="w-10 h-10 rounded-full"
-          [src]="user().image"
-          [alt]="user().name"
+        <div class="flex items-center gap-2">
+          <img
+            class="w-10 h-10 rounded-full"
+            [src]="user().image"
+            [alt]="user().name"
+          />
+          <small class="flex items-center gap-1">
+            <span>{{ user().name }}</span>
+            <ng-container [ngTemplateOutlet]="verifiedIcon" />
+          </small>
+          <time class="opacity-80">{{ storyContent()?.time }}</time>
+        </div>
+
+        <div class="justify-self-end flex items-center gap-2">
+          <button>
+            <ng-container [ngTemplateOutlet]="iconPlay" />
+          </button>
+          <button>
+            <ng-container [ngTemplateOutlet]="iconDots" />
+          </button>
+        </div>
+      </header>
+
+      <footer class="flex gap-4 px-5 py-4 story-card-footer">
+        <input
+          class="flex-1 rounded-2xl py-2 px-4 bg-transparent border border-white/50 outline-none placeholder:text-white/80"
+          type="text"
+          placeholder="Reply to lautarodelcampo..."
         />
-        <small class="flex items-center gap-1">
-          <span>{{ user().name }}</span>
-          <ng-container [ngTemplateOutlet]="verifiedIcon" />
-        </small>
-        <time class="opacity-80">{{ storyContent()?.time }}</time>
-      </div>
-
-      <div class="justify-self-end flex items-center gap-2">
         <button>
-          <ng-container [ngTemplateOutlet]="iconPlay" />
+          <ng-container [ngTemplateOutlet]="likeIcon" />
         </button>
         <button>
-          <ng-container [ngTemplateOutlet]="iconDots" />
+          <ng-container [ngTemplateOutlet]="sendIcon" />
         </button>
-      </div>
-    </header>
-
-    <footer class="flex gap-4 px-5 py-4 story-card-footer">
-      <input
-        class="flex-1 rounded-2xl py-2 px-4 bg-transparent border border-white/50 outline-none placeholder:text-white/80"
-        type="text"
-        placeholder="Reply to lautarodelcampo..."
-      />
-      <button>
-        <ng-container [ngTemplateOutlet]="likeIcon" />
-      </button>
-      <button>
-        <ng-container [ngTemplateOutlet]="sendIcon" />
-      </button>
-    </footer>
-  </article>
+      </footer>
+    </article>
+  }
 
   <button
     class="absolute right-0 top-1/2 transform -translate-y-1/2 -mr-10"
