@@ -9,26 +9,48 @@
   </header>
 
   <div class="relative flex items-center h-screen -mt-14 w-[1691px] m-auto">
-    <story-thumbnail-preview
-      class="absolute"
-      style="transform: translateX(calc(-50% + 162px))"
-    />
-    <story-thumbnail-preview
-      class="absolute"
-      style="transform: translateX(calc(-50% + 427px))"
-    />
+    @if (getAdjacentStory(-2)) {
+      <story-thumbnail-preview
+        [user]="getAdjacentStory(-2)?.user!"
+        [stories]="getAdjacentStory(-2)?.stories!"
+        class="absolute"
+        style="transform: translateX(calc(-50% + 162px))"
+      />
+    }
+
+    @if (getAdjacentStory(-1)) {
+      <story-thumbnail-preview
+        [user]="getAdjacentStory(-1)?.user!"
+        [stories]="getAdjacentStory(-1)?.stories!"
+        class="absolute"
+        style="transform: translateX(calc(-50% + 427px))"
+      />
+    }
+
     <story-card
+      [user]="story()?.user!"
+      [stories]="story()?.stories!"
       class="absolute"
       style="transform: translateX(calc(-50% + 846px))"
     />
-    <story-thumbnail-preview
-      class="absolute"
-      style="transform: translateX(calc(-50% + 1264px))"
-    />
-    <story-thumbnail-preview
-      class="absolute"
-      style="transform: translateX(calc(-50% + 1529px))"
-    />
+
+    @if (getAdjacentStory(1)) {
+      <story-thumbnail-preview
+        [user]="getAdjacentStory(1)?.user!"
+        [stories]="getAdjacentStory(1)?.stories!"
+        class="absolute"
+        style="transform: translateX(calc(-50% + 1264px))"
+      />
+    }
+
+    @if (getAdjacentStory(2)) {
+      <story-thumbnail-preview
+        [user]="getAdjacentStory(2)?.user!"
+        [stories]="getAdjacentStory(2)?.stories!"
+        class="absolute"
+        style="transform: translateX(calc(-50% + 1529px))"
+      />
+    }
   </div>
 </div>
 

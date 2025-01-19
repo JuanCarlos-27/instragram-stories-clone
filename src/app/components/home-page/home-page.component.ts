@@ -37,6 +37,6 @@ export default class HomePageComponent {
   }
 
   openStory(profile: Story) {
-    this.router.navigate(['/stories', profile.name]);
+    this.router.navigate(['/stories', profile.user.name]);
   }
 }

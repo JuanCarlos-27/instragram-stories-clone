@@ -26,8 +26,8 @@
         @for (item of visbleProfiles(); track $index) {
           <story-picture
             (click)="openStory(item)"
-            [picture]="item.image"
-            [username]="item.name"
+            [picture]="item.user.image"
+            [username]="item.user.name"
           />
         }
       </div>

@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Story } from '@interfaces/story.interface';
-import { profiles } from '../data';
+import { stories } from '../data';
 
 @Injectable({
   providedIn: 'root',
@@ -8,5 +8,5 @@ import { profiles } from '../data';
 export class StoriesDataService {
   constructor() {}
 
-  public stories = signal<Story[]>(profiles);
+  public stories = signal<Story[]>(stories);
 }
