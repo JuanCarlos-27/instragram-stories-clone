@@ -23,6 +23,7 @@ import { StoriesDataService } from '@services/stories-data.service';
   styleUrl: './story-screen-modal.component.css',
   host: {
     class: 'absolute inset-0 bg-black bg-[#1a1a1a] z-50 ',
+    '(document:keydown.escape)': 'closeModal()',
   },
 })
 export default class StoryScreenModalComponent {

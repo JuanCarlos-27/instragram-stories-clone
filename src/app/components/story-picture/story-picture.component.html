@@ -1,14 +1,18 @@
 <div class="flex flex-col justify-center select-none" draggable="false">
   <picture
-    class="rounded-full p-[2px] size-[66px] bg-gradient-to-r from-[#f5c33b] to-[#d500bf] via-[#fb3c44] cursor-pointer"
+    class="rounded-full p-[2px] size-[66px] bg-gradient-to-r cursor-pointer"
+    [ngClass]="{
+      'from-[#f5c33b] to-[#d500bf] via-[#fb3c44]': !hasViwedEveryStory(),
+      'from-[#9696963f] to-[#525252] via-[#696969]': hasViwedEveryStory(),
+    }"
   >
     <img
       [src]="picture()"
-      alt=""
+      [alt]="username()"
       class="object-cover rounded-full border-[3px] border-[#121212]"
       width="66"
       height="66"
     />
   </picture>
-  <p class="text-center text-[11px]">{{ username() }}</p>
+  <p class="text-center text-sm">{{ username() }}</p>
 </div>

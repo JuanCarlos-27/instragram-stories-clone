@@ -9,18 +9,11 @@
     <div
       class="story-small-preview w-full h-full flex justify-center items-center flex-col gap-1"
     >
-      <picture
-        class="rounded-full p-[2px] size-[66px] bg-gradient-to-r from-[#f5c33b] to-[#d500bf] via-[#fb3c44] cursor-pointer"
-      >
-        <img
-          [src]="user().image"
-          class="object-cover rounded-full border-[3px] border-[#121212]"
-          alt=""
-        />
-      </picture>
-      <strong class="font-semibold">
-        {{ user().name }}
-      </strong>
+      <story-picture
+        [picture]="user().image"
+        [username]="user().name"
+        [stories]="stories()"
+      />
       <time> {{ firstStory()?.time }} </time>
     </div>
   </article>

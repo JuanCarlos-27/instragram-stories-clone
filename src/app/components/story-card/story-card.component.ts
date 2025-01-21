@@ -11,12 +11,17 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reel, User } from '@app/interfaces/story.interface';
+import { StoriesDataService } from '@app/services/stories-data.service';
 
 @Component({
   selector: 'story-card',
   imports: [NgTemplateOutlet, NgStyle],
   templateUrl: './story-card.component.html',
   styleUrl: './story-card.component.css',
+  host: {
+    '(document:keydown.ArrowRight)': 'nextStory()',
+    '(document:keydown.ArrowLeft)': 'prevStory()',
+  },
 })
 export class StoryCardComponent implements OnInit, OnDestroy {
   private router = inject(Router);
@@ -33,15 +38,12 @@ export class StoryCardComponent implements OnInit, OnDestroy {
     return this.stories().at(this.storyPosition());
   });
 
-  efecto = effect(() => {
-    console.log('NUevo efecto', this.user());
-    console.log('NUevo Story', this.stories());
-    console.log('NUevo storyPosition', this.storyPosition());
-  });
-
   private timer: any;
 
+  private storiesService = inject(StoriesDataService);
+
   ngOnInit() {
+    console.log('🔴🔴🔴🔴🔴🔴');
     this.startTimer();
   }
 
@@ -63,10 +65,19 @@ export class StoryCardComponent implements OnInit, OnDestroy {
   }
 
   public nextStory = () => {
+    this.storiesService.markStoryViewed(
+      this.storyContent()!.id,
+      this.user().name,
+    );
+
     this.storyPosition.update((position) => {
       const newPosition = position + 1;
       return newPosition;
     });
+
+    if (this.nextUserName() == null) {
+      this.router.navigate(['/']);
+    }
 
     if (this.storyPosition() === this.stories().length) {
       this.router.navigate(['/stories', this.nextUserName()]);
@@ -77,6 +88,11 @@ export class StoryCardComponent implements OnInit, OnDestroy {
   };
 
   public prevStory = () => {
+    this.storiesService.markStoryViewed(
+      this.storyContent()!.id,
+      this.user().name,
+    );
+
     this.storyPosition.update((position) => Math.max(position - 1, 0));
 
     if (this.storyPosition() === 0) {

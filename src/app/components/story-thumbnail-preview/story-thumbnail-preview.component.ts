@@ -2,10 +2,11 @@ import { NgStyle } from '@angular/common';
 import { Component, computed, inject, input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reel, User } from '@app/interfaces/story.interface';
+import { StoryPictureComponent } from '@components/story-picture/story-picture.component';
 
 @Component({
   selector: 'story-thumbnail-preview',
-  imports: [NgStyle],
+  imports: [NgStyle, StoryPictureComponent],
   templateUrl: './story-thumbnail-preview.component.html',
   styleUrl: './story-thumbnail-preview.component.css',
 })
