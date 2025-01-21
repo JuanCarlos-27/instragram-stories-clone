@@ -348,7 +348,7 @@ export const stories = [
       {
         id: '1',
         image:
-          '"https://i.pinimg.com/236x/0d/b9/79/0db97950a8bf4498b4fbc3dd571daabc.jpg',
+          'https://i.pinimg.com/236x/0d/b9/79/0db97950a8bf4498b4fbc3dd571daabc.jpg',
         watched: false,
         time: '19h',
       },

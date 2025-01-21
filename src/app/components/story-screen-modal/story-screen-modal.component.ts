@@ -22,7 +22,7 @@ import { StoriesDataService } from '@services/stories-data.service';
   templateUrl: './story-screen-modal.component.html',
   styleUrl: './story-screen-modal.component.css',
   host: {
-    class: 'absolute inset-0 bg-black bg-[#1a1a1a] z-50 ',
+    class: 'absolute inset-0 bg-[#1a1a1a] z-50',
     '(document:keydown.escape)': 'closeModal()',
   },
 })

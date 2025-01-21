@@ -21,6 +21,7 @@ import { StoriesDataService } from '@app/services/stories-data.service';
   host: {
     '(document:keydown.ArrowRight)': 'nextStory()',
     '(document:keydown.ArrowLeft)': 'prevStory()',
+    '(document:keydown.Space)': 'isPaused() ? playStory() : pauseStory()',
   },
 })
 export class StoryCardComponent implements OnInit, OnDestroy {
@@ -33,6 +34,7 @@ export class StoryCardComponent implements OnInit, OnDestroy {
 
   public storyPosition = signal(0);
   public progress = signal(0);
+  public isPaused = signal(false);
 
   public storyContent = computed(() => {
     return this.stories().at(this.storyPosition());
@@ -43,17 +45,17 @@ export class StoryCardComponent implements OnInit, OnDestroy {
   private storiesService = inject(StoriesDataService);
 
   ngOnInit() {
-    console.log('🔴🔴🔴🔴🔴🔴');
     this.startTimer();
   }
 
   ngOnDestroy() {
-    console.log('Story card destroyed');
     clearInterval(this.timer);
   }
 
   private startTimer() {
     this.timer = setInterval(() => {
+      if (this.isPaused()) return;
+
       this.progress.update((progress) => {
         if (progress >= 100) {
           this.nextStory();
@@ -63,6 +65,14 @@ export class StoryCardComponent implements OnInit, OnDestroy {
       });
     }, 100);
   }
+
+  public pauseStory = () => {
+    this.isPaused.set(true);
+  };
+
+  public playStory = () => {
+    this.isPaused.set(false);
+  };
 
   public nextStory = () => {
     this.storiesService.markStoryViewed(
