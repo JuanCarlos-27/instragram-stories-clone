@@ -1,4 +1,12 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { StoryPictureComponent } from '@components/story-picture/story-picture.component';
 import { Router } from '@angular/router';
@@ -11,7 +19,7 @@ import { Story } from '@interfaces/story.interface';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
-export default class HomePageComponent {
+export default class HomePageComponent implements AfterViewInit {
   private router = inject(Router);
   private data = inject(StoriesDataService);
 
@@ -23,6 +31,45 @@ export default class HomePageComponent {
   public isFinal = computed(
     () => this.movement() * 4 >= this.profilesLength() - 4,
   );
+
+  private container = viewChild<ElementRef<HTMLDivElement>>('main');
+  private touchStartX = 0;
+  private touchEndX = 0;
+
+  ngAfterViewInit() {
+    const container = this.container()?.nativeElement;
+
+    if (container) {
+      container.addEventListener(
+        'touchstart',
+        this.handleTouchStart.bind(this),
+        false,
+      );
+      container.addEventListener(
+        'touchend',
+        this.handleTouchEnd.bind(this),
+        false,
+      );
+    }
+  }
+
+  handleTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  handleTouchEnd(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleGesture();
+  }
+
+  handleGesture() {
+    if (this.touchEndX < this.touchStartX) {
+      this.nextProfiles();
+    }
+    if (this.touchEndX > this.touchStartX) {
+      this.previousProfiles();
+    }
+  }
 
   nextProfiles() {
     this.translateX.set(`translateX(-${this.movement() * 328}px)`);
