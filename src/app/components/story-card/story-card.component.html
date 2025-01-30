@@ -61,19 +61,21 @@
       </header>
 
       <footer
-        class="flex gap-1 xl:gap-4 px-1 md:px-2 xl:px-5 py-4 story-card-footer"
+        class="flex items-center gap-1 xl:gap-4 px-1 md:px-2 xl:px-5 py-4 story-card-footer"
       >
         <input
           class="rounded-2xl py-2 px-4 bg-transparent border border-white/50 outline-none placeholder:text-white/80"
           type="text"
           [placeholder]="'Reply to ' + user().name + '...'"
         />
-        <button>
-          <ng-container [ngTemplateOutlet]="likeIcon" />
-        </button>
-        <button>
-          <ng-container [ngTemplateOutlet]="sendIcon" />
-        </button>
+        <div>
+          <button>
+            <ng-container [ngTemplateOutlet]="likeIcon" />
+          </button>
+          <button>
+            <ng-container [ngTemplateOutlet]="sendIcon" />
+          </button>
+        </div>
       </footer>
     </article>
   }
