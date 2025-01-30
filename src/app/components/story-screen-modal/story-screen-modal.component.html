@@ -1,31 +1,33 @@
 <div
   class="px-10 pt-5 w-full justify-center relative duration-300 ease-in-out transition-all"
 >
-  <header class="flex justify-between">
+  <header class="relative flex justify-between z-50">
     <h1>Instagram</h1>
     <button type="button" (click)="closeModal()">
       <ng-container [ngTemplateOutlet]="iconClose"> </ng-container>
     </button>
   </header>
 
-  <div class="relative flex items-center h-screen -mt-14 w-[1691px] m-auto">
-    @if (getAdjacentStory(-2)) {
-      <story-thumbnail-preview
-        [user]="getAdjacentStory(-2)?.user!"
-        [stories]="getAdjacentStory(-2)?.stories!"
-        class="absolute"
-        style="transform: translateX(calc(-50% + 162px))"
-      />
-    }
+  <div
+    class="relative flex items-center h-screen -mt-14 justify-center gap-[420px] xl:gap-[500px] 2xl:gap-[700px] w-full"
+  >
+    <div class="flex gap-5 xl:gap-10">
+      @if (getAdjacentStory(-2)) {
+        <story-thumbnail-preview
+          [user]="getAdjacentStory(-2)?.user!"
+          [stories]="getAdjacentStory(-2)?.stories!"
+          class="hidden lg:block"
+        />
+      }
 
-    @if (getAdjacentStory(-1)) {
-      <story-thumbnail-preview
-        [user]="getAdjacentStory(-1)?.user!"
-        [stories]="getAdjacentStory(-1)?.stories!"
-        class="absolute"
-        style="transform: translateX(calc(-50% + 427px))"
-      />
-    }
+      @if (getAdjacentStory(-1)) {
+        <story-thumbnail-preview
+          [user]="getAdjacentStory(-1)?.user!"
+          [stories]="getAdjacentStory(-1)?.stories!"
+          class="hidden md:block"
+        />
+      }
+    </div>
 
     <story-card
       [user]="story()?.user!"
@@ -33,26 +35,26 @@
       [nextUserName]="getAdjacentStory(1)?.user?.name!"
       [prevUserName]="getAdjacentStory(-1)?.user?.name!"
       class="absolute"
-      style="transform: translateX(calc(-50% + 846px))"
+      style="left: 50%; transform: translateX(-50%)"
     />
 
-    @if (getAdjacentStory(1)) {
-      <story-thumbnail-preview
-        [user]="getAdjacentStory(1)?.user!"
-        [stories]="getAdjacentStory(1)?.stories!"
-        class="absolute"
-        style="transform: translateX(calc(-50% + 1264px))"
-      />
-    }
+    <div class="flex gap-5 xl:gap-10">
+      @if (getAdjacentStory(1)) {
+        <story-thumbnail-preview
+          [user]="getAdjacentStory(1)?.user!"
+          [stories]="getAdjacentStory(1)?.stories!"
+          class="hidden md:block"
+        />
+      }
 
-    @if (getAdjacentStory(2)) {
-      <story-thumbnail-preview
-        [user]="getAdjacentStory(2)?.user!"
-        [stories]="getAdjacentStory(2)?.stories!"
-        class="absolute"
-        style="transform: translateX(calc(-50% + 1529px))"
-      />
-    }
+      @if (getAdjacentStory(2)) {
+        <story-thumbnail-preview
+          [user]="getAdjacentStory(2)?.user!"
+          [stories]="getAdjacentStory(2)?.stories!"
+          class="hidden lg:block"
+        />
+      }
+    </div>
   </div>
 </div>
 
